@@ -7,13 +7,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f8f9fa;
+    color: #f1f1f1; /* Color claro para el texto */
+    background-color: #121212; /* Fondo oscuro */
 }
 
 /* Header */
 .header {
-    background-color: #002a42; /* Cambia el color de fondo */
+    background-color: #1e1e1e; /* Fondo oscuro para el header */
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
@@ -34,7 +34,7 @@ body {
 }
 
 .menu a {
-    color: #fff;
+    color: #f1f1f1; /* Color claro para los enlaces */
     margin-left: 20px;
     text-decoration: none;
     font-weight: bold;
@@ -61,10 +61,37 @@ body {
     background: linear-gradient(45deg, #0072ff, #00c6ff);
 }
 
+/* Sección de introducción */
+.intro {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #1e1e1e; /* Fondo oscuro */
+}
+
+.intro h1 {
+    color: #00c6ff; /* Color destacado para el título */
+    font-size: 2.5em;
+}
+
+.intro p {
+    color: #d3d3d3; /* Texto en color gris claro */
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
 /* Footer */
 .footer {
-    background-color: #002a42;
-    color: #fff;
+    background-color: #1e1e1e; /* Fondo oscuro para el footer */
+    color: #f1f1f1;
     text-align: center;
     padding: 10px 0;
+}
+
+.footer a {
+    color: #00d1b2; /* Color para enlaces en el footer */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #00c6ff;
 }
