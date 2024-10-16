@@ -95,3 +95,78 @@ body {
 .footer a:hover {
     color: #00c6ff;
 }
+
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px; /* Tamaño del logotipo */
+}
+
+.menu a {
+    color: #f1f1f1; /* Color claro para los enlaces */
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #00d1b2; /* Color de hover en los enlaces */
+}
+
+/* Estilos del CTA (Llamado a la acción) */
+.cta-button {
+    display: inline-block;
+    padding: 15px 25px;
+    color: #fff;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: linear-gradient(45deg, #0072ff, #00c6ff);
+}
+
+/* Sección de introducción */
+.intro {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #1e1e1e; /* Fondo oscuro */
+}
+
+.intro h1 {
+    color: #00c6ff; /* Color destacado para el título */
+    font-size: 2.5em;
+}
+
+.intro p {
+    color: #d3d3d3; /* Texto en color gris claro */
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+/* Footer */
+.footer {
+    background-color: #1e1e1e; /* Fondo oscuro para el footer */
+    color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer a {
+    color: #00d1b2; /* Color para enlaces en el footer */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #00c6ff;
+}
