@@ -30,7 +30,7 @@
         .background-video {
             width: 100%;
             height: auto;
-            display: none; /* El video local estará oculto inicialmente */
+            display: none; /* Ocultar video local al principio */
         }
     </style>
 </head>
@@ -50,29 +50,19 @@
     </header>
 
     <section class="intro">
-        <!-- Contenedor del Video de Canva (Primera opción) -->
-        <div id="canvaVideoContainer" class="video-embed-container">
+        <!-- Contenedor del Video de YouTube (prioridad) -->
+        <div id="youtubeVideoContainer" class="video-embed-container">
             <iframe 
-                src="https://www.canva.com/design/DAGTzIIJpiU/rEyozKehhushqFmb8uY74Q/watch?embed" 
-                title="Canva Video Embed" 
-                loading="lazy" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <!-- Contenedor del Video de YouTube (Segunda opción) -->
-        <div id="youtubeVideoContainer" class="video-embed-container" style="display: none;">
-            <iframe 
+                id="universalEmbed" 
                 src="https://www.youtube.com/embed/A8oLDIiltUQ?autoplay=1&mute=1&rel=0" 
-                title="YouTube video player" 
+                title="Video Universal" 
                 loading="lazy" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
             </iframe>
         </div>
 
-        <!-- Video Local en formato .mp4 (última opción) -->
+        <!-- Video Local en formato .mp4 (opción secundaria) -->
         <video id="backgroundVideo" autoplay muted loop playsinline class="background-video">
             <source src="videos/ai-brain.mp4" type="video/mp4">
             Tu navegador no soporta el video en formato .mp4.
@@ -87,19 +77,13 @@
     <!-- JavaScript para priorizar videos embebidos y hacer fallback -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const backgroundVideo = document.getElementById("backgroundVideo");
             const youtubeVideoContainer = document.getElementById("youtubeVideoContainer");
-            const canvaVideoContainer = document.getElementById("canvaVideoContainer");
+            const backgroundVideo = document.getElementById("backgroundVideo");
+            const universalEmbed = document.getElementById("universalEmbed");
 
-            // Detecta si hay problemas con el iframe de Canva
-            canvaVideoContainer.querySelector("iframe").onerror = function() {
-                canvaVideoContainer.style.display = "none";  // Oculta el iframe de Canva
-                youtubeVideoContainer.style.display = "block"; // Muestra el iframe de YouTube
-            };
-
-            // Detecta si hay problemas con el iframe de YouTube
-            youtubeVideoContainer.querySelector("iframe").onerror = function() {
-                youtubeVideoContainer.style.display = "none";  // Oculta el iframe de YouTube
+            // Detecta si hay problemas con el iframe del video universal (YouTube u otro)
+            universalEmbed.onerror = function() {
+                youtubeVideoContainer.style.display = "none";  // Oculta el iframe universal
                 backgroundVideo.style.display = "block"; // Muestra el video local en formato mp4
             };
         });
