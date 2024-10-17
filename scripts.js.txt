@@ -1,0 +1,164 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const backgroundVideo = document.getElementById("backgroundVideo");
+    const youtubeVideoContainer = document.getElementById("youtubeVideoContainer");
+    const canvaVideoContainer = document.querySelector(".video-embed-container");
+
+    // Detecta si hay problemas con el video .mp4 y muestra el de YouTube o Canva en su lugar
+    backgroundVideo.onerror = function() {
+        backgroundVideo.style.display = "none";  // Oculta el video .mp4
+        youtubeVideoContainer.style.display = "block"; // Muestra el iframe de YouTube
+
+        // En caso de que YouTube también falle, muestra Canva
+        youtubeVideoContainer.onerror = function() {
+            youtubeVideoContainer.style.display = "none";  // Oculta el video de YouTube
+            canvaVideoContainer.style.display = "block";  // Muestra el iframe de Canva
+        };
+    };
+});
+    const translations = {
+        en: {
+            menuCourses: "Discover Our Courses",
+            menuTestimonials: "Testimonials",
+            menuContact: "Contact",
+            startButton: "Start Today",
+            heading: "Transform Your Business with Artificial Intelligence in Just a Few Weeks",
+            subheading: "Discover how AI can help you increase sales, automate processes, and make strategic decisions.",
+            buttonText: "I Want to Learn AI Now!",
+            coursesTitle: "Why Choose Our Courses?",
+            course1: "From Beginner to Expert: Suitable for all levels.",
+            course2: "Time-Saving Automation: Optimize repetitive tasks.",
+            course3: "AI-Based Marketing Techniques: Conquer the market.",
+            testimonialsTitle: "What Our Clients Say",
+            testimonial1: "AI Edupreneur's courses transformed our business! Now, we save hours every week.",
+            testimonial2: "Thanks to their AI course, our marketing improved significantly.",
+            testimonial3: "Highly recommend! The AI insights have been a game changer.",
+            client1Name: "Jane Doe",
+            client1Title: "CEO, Tech Solutions",
+            client2Name: "John Smith",
+            client2Title: "Marketing Director, SalesBoost",
+            client3Name: "Linda Johnson",
+            client3Title: "Founder, StartSmart",
+            contactTitle: "Get in Touch",
+            labelName: "Name:",
+            labelEmail: "Email:",
+            labelMessage: "Message:",
+            sendButton: "Send Message"
+        },
+        es: {
+            menuCourses: "Descubre Nuestros Cursos",
+            menuTestimonials: "Testimonios",
+            menuContact: "Contacto",
+            startButton: "Empieza Hoy",
+            heading: "Transforma tu negocio con inteligencia artificial en solo unas semanas",
+            subheading: "Descubre cómo la IA puede ayudarte a aumentar ventas, automatizar procesos y tomar decisiones estratégicas.",
+            buttonText: "¡Quiero aprender IA ahora!",
+            coursesTitle: "¿Por qué elegir nuestros cursos?",
+            course1: "Desde cero hasta experto: Apto para todos los niveles.",
+            course2: "Automatización que ahorra tiempo: Optimiza tareas repetitivas.",
+            course3: "Técnicas de marketing basadas en IA: Conquista el mercado.",
+            testimonialsTitle: "Lo que dicen nuestros clientes",
+            testimonial1: "¡Los cursos de AI Edupreneur transformaron nuestro negocio! Ahora, ahorramos horas cada semana.",
+            testimonial2: "Gracias a su curso de IA, nuestro marketing mejoró significativamente.",
+            testimonial3: "¡Altamente recomendable! Los conocimientos en IA han sido un cambio total.",
+            client1Name: "Jane Doe",
+            client1Title: "CEO, Soluciones Tecnológicas",
+            client2Name: "John Smith",
+            client2Title: "Director de Marketing, SalesBoost",
+            client3Name: "Linda Johnson",
+            client3Title: "Fundadora, StartSmart",
+            contactTitle: "Contáctanos",
+            labelName: "Nombre:",
+            labelEmail: "Correo electrónico:",
+            labelMessage: "Mensaje:",
+            sendButton: "Enviar mensaje"
+        }
+    };
+
+    // Selección de elementos para la traducción
+    const languageSelector = document.getElementById("language-selector");
+    const menuCourses = document.getElementById("menu-courses");
+    const menuTestimonials = document.getElementById("menu-testimonials");
+    const menuContact = document.getElementById("menu-contact");
+    const startButton = document.getElementById("start-button");
+    const heading = document.getElementById("heading");
+    const subheading = document.getElementById("subheading");
+    const learnButton = document.getElementById("learn-button");
+    const coursesTitle = document.getElementById("coursesTitle");
+    const courseItems = [
+        document.getElementById("course1"),
+        document.getElementById("course2"),
+        document.getElementById("course3")
+    ];
+    const testimonialsTitle = document.getElementById("testimonialsTitle");
+    const testimonialTexts = [
+        document.getElementById("testimonial1"),
+        document.getElementById("testimonial2"),
+        document.getElementById("testimonial3")
+    ];
+    const clientNames = [
+        document.getElementById("client1Name"),
+        document.getElementById("client2Name"),
+        document.getElementById("client3Name")
+    ];
+    const clientTitles = [
+        document.getElementById("client1Title"),
+        document.getElementById("client2Title"),
+        document.getElementById("client3Title")
+    ];
+    const contactTitle = document.getElementById("contactTitle");
+    const labelName = document.getElementById("labelName");
+    const labelEmail = document.getElementById("labelEmail");
+    const labelMessage = document.getElementById("labelMessage");
+    const sendButton = document.getElementById("sendButton");
+
+    // Función para cambiar el idioma
+    function changeLanguage(language) {
+        const translation = translations[language];
+        
+        menuCourses.textContent = translation.menuCourses;
+        menuTestimonials.textContent = translation.menuTestimonials;
+        menuContact.textContent = translation.menuContact;
+        startButton.textContent = translation.startButton;
+        heading.textContent = translation.heading;
+        subheading.textContent = translation.subheading;
+        learnButton.textContent = translation.buttonText;
+        coursesTitle.textContent = translation.coursesTitle;
+        courseItems[0].textContent = translation.course1;
+        courseItems[1].textContent = translation.course2;
+        courseItems[2].textContent = translation.course3;
+        testimonialsTitle.textContent = translation.testimonialsTitle;
+        testimonialTexts[0].textContent = translation.testimonial1;
+        testimonialTexts[1].textContent = translation.testimonial2;
+        testimonialTexts[2].textContent = translation.testimonial3;
+        clientNames[0].textContent = translation.client1Name;
+        clientNames[1].textContent = translation.client2Name;
+        clientNames[2].textContent = translation.client3Name;
+        clientTitles[0].textContent = translation.client1Title;
+        clientTitles[1].textContent = translation.client2Title;
+        clientTitles[2].textContent = translation.client3Title;
+        contactTitle.textContent = translation.contactTitle;
+        labelName.textContent = translation.labelName;
+        labelEmail.textContent = translation.labelEmail;
+        labelMessage.textContent = translation.labelMessage;
+        sendButton.textContent = translation.sendButton;
+    }
+
+    // Event listener para cambiar de idioma
+    languageSelector.addEventListener("change", (event) => {
+        changeLanguage(event.target.value);
+    });
+
+    // Lógica para cambiar de video en caso de error de carga
+    const backgroundVideo = document.getElementById("backgroundVideo");
+    const youtubeVideoContainer = document.getElementById("youtubeVideoContainer");
+
+    backgroundVideo.onerror = function() {
+        backgroundVideo.style.display = "none";  // Oculta el video .mp4
+        youtubeVideoContainer.style.display = "block"; // Muestra el iframe de YouTube
+    };
+    
+    // Lazy loading del iframe de YouTube
+    const iframe = youtubeVideoContainer.querySelector("iframe");
+    iframe.setAttribute("loading", "lazy");
+});
+
