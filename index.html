@@ -11,11 +11,11 @@
         .video-embed-container {
             width: 100%;
             max-width: 100%;
-            height: auto;
+            height: 0;
             position: relative;
             padding-top: 56.25%; /* Proporción 16:9 */
             overflow: hidden;
-            display: none; /* Inicialmente oculto */
+            display: block; /* Los iframes estarán visibles por defecto */
         }
         /* Estilo para el iframe dentro del contenedor */
         .video-embed-container iframe {
@@ -30,6 +30,7 @@
         .background-video {
             width: 100%;
             height: auto;
+            display: none; /* El video local estará oculto inicialmente */
         }
     </style>
 </head>
@@ -49,51 +50,57 @@
     </header>
 
     <section class="intro">
-<section class="intro">
-    <!-- Video Local en formato .mp4 -->
-    <video id="backgroundVideo" autoplay muted loop playsinline class="background-video">
-        <source src="videos/tu video.mp4" type="video/mp4">
-        Tu navegador no soporta el video en formato .mp4.
-    </video>
+        <!-- Contenedor del Video de Canva (Primera opción) -->
+        <div id="canvaVideoContainer" class="video-embed-container">
+            <iframe 
+                src="https://www.canva.com/design/DAGTzIIJpiU/rEyozKehhushqFmb8uY74Q/watch?embed" 
+                title="Canva Video Embed" 
+                loading="lazy" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
 
-    <!-- Contenedor del Video de YouTube (inicialmente oculto) -->
-    <div id="youtubeVideoContainer" class="video-embed-container" style="display: none;">
-        <iframe 
-            src="https://www.youtube.com/embed/A8oLDIiltUQ?autoplay=1&mute=1&rel=0" 
-            title="YouTube video player" 
-            loading="lazy" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
- <!-- Contenedor del Video de Canva (inicialmente oculto) -->
-    <div class="canva-video-embed-container video-embed-container" style="display: none;">
-        <iframe 
-            src="https://www.canva.com/design/DAGTzIIJpiU/rEyozKehhushqFmb8uY74Q/watch" 
-            title="Canva Video Embed" 
-            loading="lazy" 
-            style="border: none;" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-    </div>
-</section>
+        <!-- Contenedor del Video de YouTube (Segunda opción) -->
+        <div id="youtubeVideoContainer" class="video-embed-container" style="display: none;">
+            <iframe 
+                src="https://www.youtube.com/embed/A8oLDIiltUQ?autoplay=1&mute=1&rel=0" 
+                title="YouTube video player" 
+                loading="lazy" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Video Local en formato .mp4 (última opción) -->
+        <video id="backgroundVideo" autoplay muted loop playsinline class="background-video">
+            <source src="videos/ai-brain.mp4" type="video/mp4">
+            Tu navegador no soporta el video en formato .mp4.
+        </video>
+
         <!-- Contenido de texto principal -->
         <h1 id="heading">Transform Your Business with Artificial Intelligence in Just a Few Weeks</h1>
         <p id="subheading">Discover how AI can help you increase sales, automate processes, and make strategic decisions.</p>
         <button id="learn-button" class="cta-button-big">I Want to Learn AI Now!</button>
     </section>
 
-    <!-- JavaScript para la lógica de cambio de video -->
+    <!-- JavaScript para priorizar videos embebidos y hacer fallback -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const backgroundVideo = document.getElementById("backgroundVideo");
             const youtubeVideoContainer = document.getElementById("youtubeVideoContainer");
+            const canvaVideoContainer = document.getElementById("canvaVideoContainer");
 
-            // Detecta si hay problemas con el video .mp4 y muestra el de YouTube en su lugar
-            backgroundVideo.onerror = function() {
-                backgroundVideo.style.display = "none";  // Oculta el video .mp4
+            // Detecta si hay problemas con el iframe de Canva
+            canvaVideoContainer.querySelector("iframe").onerror = function() {
+                canvaVideoContainer.style.display = "none";  // Oculta el iframe de Canva
                 youtubeVideoContainer.style.display = "block"; // Muestra el iframe de YouTube
+            };
+
+            // Detecta si hay problemas con el iframe de YouTube
+            youtubeVideoContainer.querySelector("iframe").onerror = function() {
+                youtubeVideoContainer.style.display = "none";  // Oculta el iframe de YouTube
+                backgroundVideo.style.display = "block"; // Muestra el video local en formato mp4
             };
         });
     </script>
