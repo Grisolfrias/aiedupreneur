@@ -32,28 +32,7 @@ header nav a {
 header nav a:hover {
     color: #17BEBB; /* Turquesa */
 }
-/* Selector de idioma estilizado */
-#language-selector {
-    background: linear-gradient(90deg, #17BEBB, #1F3C88); /* Degradado turquesa-azul */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0px 4px 10px rgba(23, 190, 187, 0.4);
-}
 
-#language-selector:hover {
-    background-color: #1F3C88; /* Cambia al azul oscuro al hacer hover */
-    transform: scale(1.05); /* Efecto de hover similar a otros botones */
-}
-
-#language-selector:focus {
-    outline: none;
-}
 /* Botones CTA */
 .cta-button, .cta-button-big {
     background: linear-gradient(90deg, #17BEBB, #1F3C88);
