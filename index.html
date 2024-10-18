@@ -46,19 +46,34 @@
     </style>
 </head>
 <body>
-    <header>
-        <img src="images/AI EDUPRENEUR-logo-3.png" alt="AI Edupreneur Logo" class="logo">
-        <nav>
-            <a href="#courses" id="menu-courses">Explora Nuestros Cursos</a>
-            <a href="#testimonials" id="menu-testimonials">Testimonios</a>
-            <a href="#contact" id="menu-contact">Contacto</a>
-            <button id="start-button" class="cta-button">Empieza Hoy</button>
-            <select id="language-selector">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-            </select>
-        </nav>
-    </header>
+<header>
+    <img class="logo" src="images/AI EDUPRENEUR-logo-3.png" alt="Logo AI Edupreneur">
+    
+    <!-- Botón de hamburguesa para móviles -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <nav>
+        <a href="#courses">Discover Our Courses</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a href="#start" class="cta-button">Start Today</a>
+        <select id="language-selector">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </nav>
+</header>
+
+<script>
+    function toggleMenu() {
+        document.querySelector('nav').classList.toggle('active');
+        document.querySelector('.menu-toggle').classList.toggle('active');
+    }
+</script>
 
     <section class="intro">
         <!-- Contenedor del Video de YouTube (prioridad) -->
@@ -137,6 +152,21 @@
             <button type="submit" id="sendButton">Enviar Mensaje</button>
         </form>
     </section>
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function(){
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/YOUR_TAWK_PROPERTY_ID/DEFAULT';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script>
+<a href="https://wa.me/17076087610?text=Hola%20estoy%20interesado%20en%20tus%20cursos" 
+   target="_blank" class="whatsapp-widget">
+   <img src="images/whatsapp icon.png" alt="WhatsApp Chat">
+</a>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -262,6 +292,7 @@
             sendButton.textContent = translation.sendButton;
         }
 
+
         // Sincronizar el selector de idioma con el idioma actual
         function syncLanguageSelector(language) {
             languageSelector.value = language;
@@ -285,4 +316,5 @@
         detectLanguage(); // Ejecutar la detección de idioma al cargar
     });
 </script>
+
 </html>
