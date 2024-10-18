@@ -2,22 +2,9 @@
 body {
     font-family: 'Lato', sans-serif;
     color: #E0E0E0;
-    background: linear-gradient(180deg, #121212, #1E1E1E);
+    background: linear-gradient(135deg, #0D1B2A, #1F3C88, #121212);
     margin: 0;
     padding: 0;
-}
-
-/* Solo deshabilitamos la selección de texto en títulos o elementos específicos */
-h1, h2, .cta-button-big, .cta-button {
-    user-select: none; /* Evita la selección de texto en estos elementos */
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-img {
-    pointer-events: none; /* Evita el clic derecho solo en imágenes */
 }
 
 /* Header */
@@ -26,72 +13,78 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: linear-gradient(180deg, #1E1E1E, #121212);
+    background: linear-gradient(180deg, #121212, #0D1B2A);
 }
 
 header img.logo {
     height: 80px;
-    margin-right: 20px;
 }
 
 header nav a {
-    margin: 0 15px;
-    text-decoration: none;
     color: #E0E0E0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 header nav a:hover {
-    color: #1db2f3;
-    transition: color 0.3s;
+    color: #17BEBB; /* Turquesa */
 }
-
+/* Selector de idioma estilizado */
 #language-selector {
-    background-color: #1a1a1a;
-    color: #fff;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    border-radius: 4px;
+    background: linear-gradient(90deg, #17BEBB, #1F3C88); /* Degradado turquesa-azul */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     font-family: 'Montserrat', sans-serif;
-    margin-left: 10px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(23, 190, 187, 0.4);
 }
 
 #language-selector:hover {
-    border-color: #00b7ff;
+    background-color: #1F3C88; /* Cambia al azul oscuro al hacer hover */
+    transform: scale(1.05); /* Efecto de hover similar a otros botones */
 }
 
-/* Botón CTA */
-.cta-button {
-    background: linear-gradient(90deg, #1db2f3, #1dd4f2);
+#language-selector:focus {
+    outline: none;
+}
+/* Botones CTA */
+.cta-button, .cta-button-big {
+    background: linear-gradient(90deg, #17BEBB, #1F3C88);
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
-    font-size: 1.1rem;
-    cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    transition: transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 15px rgba(23, 190, 187, 0.4);
 }
 
-.cta-button:hover {
+.cta-button:hover, .cta-button-big:hover {
+    background-color: #1F3C88;
     transform: scale(1.05);
 }
 
 /* Sección de introducción */
 .intro {
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1db2f3, #121212);
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #1F3C88, #0D1B2A);
     color: white;
 }
 
 .intro h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 20px;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .intro p {
@@ -99,231 +92,144 @@ header nav a:hover {
     margin-bottom: 40px;
 }
 
-.cta-button-big {
-    background: linear-gradient(90deg, #1db2f3, #1dd4f2);
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.cta-button-big:hover {
-    transform: scale(1.1);
-}
-
-/* Fondo de video */
-.background-video {
-    width: 100%;
-    height: auto;
-    max-height: 500px;
-    object-fit: cover;
-    pointer-events: none; /* Desactiva la interacción en el video */
-}
-
-/* Contenedor de YouTube y Canva */
-.video-embed-container, .canva-video-embed-container {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    position: relative;
-    padding-top: 56.25%; /* Proporción 16:9 */
-    overflow: hidden;
-}
-
-/* Estilo para el iframe dentro del contenedor */
-.video-embed-container iframe, .canva-video-embed-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
 /* Sección de cursos */
 .courses-overview {
     padding: 60px 20px;
     text-align: center;
-    background: linear-gradient(180deg, #1E1E1E, #121212);
+    background: linear-gradient(180deg, #121212, #0D1B2A);
+    color: #E0E0E0;
 }
 
 .courses-overview h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    color: #1db2f3;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: #17BEBB;
 }
 
 .separator {
     width: 80px;
     height: 3px;
-    background-color: #1db2f3;
-    margin: 0 auto 20px;
+    background-color: #17BEBB;
+    margin: 20px auto;
     border-radius: 3px;
-}
-
-.courses-overview ul {
-    list-style: none;
-    padding: 0;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.courses-overview li {
-    font-size: 1.1rem;
-    margin: 10px 0;
-}
-
-.courses-overview li strong {
-    color: #1dd4f2;
 }
 
 /* Sección de testimonios */
 .testimonials {
-    background-color: #f9f9f9;
     padding: 50px 20px;
+    background: linear-gradient(180deg, #0D1B2A, #121212);
+    color: white;
     text-align: center;
 }
 
 .testimonials h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #17BEBB;
 }
 
 .testimonial-container {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .testimonial {
     max-width: 300px;
     margin: 10px;
+    background-color: #1A1A2E;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
 }
 
-.testimonial img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+.testimonial:hover {
+    transform: scale(1.05);
 }
 
 .testimonial p {
     font-size: 1rem;
-    color: #666;
+    color: #E0E0E0;
 }
 
 .testimonial h4 {
-    color: #333;
-    margin: 5px 0;
+    color: #17BEBB;
 }
 
 /* Sección de contacto */
 .contact {
-    background: linear-gradient(180deg, #1E1E1E, #121212);
-    color: #ffffff;
     padding: 50px 20px;
+    background: linear-gradient(180deg, #121212, #000000);
+    color: white;
     text-align: center;
 }
 
 .contact h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #17BEBB;
 }
 
 .contact form {
     max-width: 400px;
     margin: 0 auto;
-    text-align: left;
-}
-
-.contact label {
-    display: block;
-    margin: 10px 0 5px;
 }
 
 .contact input, .contact textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #444;
+    background-color: #1A1A2E;
+    color: white;
     border-radius: 5px;
 }
 
 .contact button {
-    background-color: #0099ff;
-    color: #ffffff;
+    background: #17BEBB;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .contact button:hover {
-    background-color: #007acc;
+    background-color: #1F3C88;
+    transform: scale(1.05);
 }
 
-/* Responsivo para tablets y móviles */
+/* Botón de WhatsApp */
+.whatsapp-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #17BEBB;
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-widget img {
+    width: 40px;
+    height: 40px;
+}
+
+.whatsapp-widget:hover {
+    background-color: #1F3C88;
+    transform: scale(1.1);
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .intro h1 {
-        font-size: 2rem;
-    }
-
-    .intro p {
-        font-size: 1rem;
-        margin-bottom: 20px;
-    }
-
-    .courses-overview h2 {
-        font-size: 1.8rem;
-    }
-
     .testimonial-container {
         flex-direction: column;
         align-items: center;
-    }
-
-    .testimonial {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .cta-button, .cta-button-big {
-        font-size: 1rem;
-        padding: 10px 15px;
-    }
-
-    .intro h1 {
-        font-size: 1.8rem;
-    }
-
-    .intro p {
-        font-size: 0.9rem;
-    }
-
-    .courses-overview h2 {
-        font-size: 1.5rem;
-    }
-
-    header img.logo {
-        height: 50px;
     }
 }
