@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -32,16 +32,27 @@
             height: auto;
             display: none; /* Ocultar video local al principio */
         }
+        /* Protección básica contra copia */
+        body {
+            user-select: none; /* Evita la selección de texto */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        /* Deshabilita el botón derecho */
+        body {
+            -webkit-touch-callout: none;
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="images/AI EDUPRENEUR-logo-3.png" alt="AI Edupreneur Logo" class="logo">
         <nav>
-            <a href="#courses" id="menu-courses">Discover Our Courses</a>
-            <a href="#testimonials" id="menu-testimonials">Testimonials</a>
-            <a href="#contact" id="menu-contact">Contact</a>
-            <button id="start-button" class="cta-button">Start Today</button>
+            <a href="#courses" id="menu-courses">Explora Nuestros Cursos</a>
+            <a href="#testimonials" id="menu-testimonials">Testimonios</a>
+            <a href="#contact" id="menu-contact">Contacto</a>
+            <button id="start-button" class="cta-button">Empieza Hoy</button>
             <select id="language-selector">
                 <option value="en">English</option>
                 <option value="es">Español</option>
@@ -53,10 +64,10 @@
         <!-- Contenedor del Video de YouTube (prioridad) -->
         <div id="youtubeVideoContainer" class="video-embed-container">
             <iframe 
-                id="universalEmbed" 
-                src="https://www.youtube.com/embed/A8oLDIiltUQ?autoplay=1&mute=1&rel=0" 
-                title="Video Universal" 
-                loading="lazy" 
+                src="https://www.youtube.com/embed/iRVSmQ6krpM?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" 
+                width="560" 
+                height="315" 
+                frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
             </iframe>
@@ -69,171 +80,209 @@
         </video>
 
         <!-- Contenido de texto principal -->
-        <h1 id="heading">Transform Your Business with Artificial Intelligence in Just a Few Weeks</h1>
-        <p id="subheading">Discover how AI can help you increase sales, automate processes, and make strategic decisions.</p>
-        <button id="learn-button" class="cta-button-big">I Want to Learn AI Now!</button>
+        <h1 id="heading">IA para Líderes: Gana Terreno y Llévate el Mercado</h1>
+        <p id="subheading">Descubre cómo la Inteligencia Artificial puede disparar tus ventas, automatizar procesos y hacerte dominar tu sector. No te quedes atrás.</p>
+        <button id="learn-button" class="cta-button-big">¡Quiero Aprender IA Ahora!</button>
     </section>
-
-    <!-- JavaScript para priorizar videos embebidos y hacer fallback -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const youtubeVideoContainer = document.getElementById("youtubeVideoContainer");
-            const backgroundVideo = document.getElementById("backgroundVideo");
-            const universalEmbed = document.getElementById("universalEmbed");
-
-            // Detecta si hay problemas con el iframe del video universal (YouTube u otro)
-            universalEmbed.onerror = function() {
-                youtubeVideoContainer.style.display = "none";  // Oculta el iframe universal
-                backgroundVideo.style.display = "block"; // Muestra el video local en formato mp4
-            };
-        });
-    </script>
 
     <!-- Sección de Cursos -->
     <section class="courses-overview" id="courses">
-        <h2 id="coursesTitle">Why Choose Our Courses?</h2>
+        <h2 id="coursesTitle">¿Por Qué Elegir Nuestros Cursos?</h2>
         <div class="separator"></div>
         <ul>
-            <li id="course1"><strong>From Beginner to Expert:</strong> Suitable for all levels.</li>
-            <li id="course2"><strong>Time-Saving Automation:</strong> Optimize repetitive tasks.</li>
-            <li id="course3"><strong>AI-Based Marketing Techniques:</strong> Conquer the market.</li>
+            <li id="course1"><strong>De Principiante a Experto:</strong> Aprende desde cero y lleva tus habilidades al máximo nivel.</li>
+            <li id="course2"><strong>Automatización Inteligente:</strong> Ahorra tiempo optimizando tareas repetitivas.</li>
+            <li id="course3"><strong>Estrategias de Marketing con IA:</strong> Conquista tu mercado con técnicas basadas en datos.</li>
         </ul>
     </section>
 
     <!-- Sección de Testimonios -->
     <section class="testimonials" id="testimonials">
-        <h2 id="testimonialsTitle">What Our Clients Say</h2>
+        <h2 id="testimonialsTitle">Lo Que Dicen Nuestros Clientes</h2>
         <div class="testimonial-container">
             <div class="testimonial">
                 <img src="images/client1.jpg" alt="Client 1">
-                <p id="testimonial1">"AI Edupreneur's courses transformed our business! Now, we save hours every week."</p>
+                <p id="testimonial1">"Con los cursos de AI Edupreneur, hemos optimizado nuestras operaciones y ahorramos horas cada semana."</p>
                 <h4 id="client1Name">Jane Doe</h4>
                 <p id="client1Title">CEO, Tech Solutions</p>
             </div>
             <div class="testimonial">
                 <img src="images/client2.jpg" alt="Client 2">
-                <p id="testimonial2">"Thanks to their AI course, our marketing improved significantly."</p>
+                <p id="testimonial2">"Gracias a la IA, nuestro marketing ha dado un salto enorme."</p>
                 <h4 id="client2Name">John Smith</h4>
-                <p id="client2Title">Marketing Director, SalesBoost</p>
+                <p id="client2Title">Director de Marketing, SalesBoost</p>
             </div>
             <div class="testimonial">
                 <img src="images/client3.jpg" alt="Client 3">
-                <p id="testimonial3">"Highly recommend! The AI insights have been a game changer."</p>
+                <p id="testimonial3">"¡Recomiendo AI Edupreneur sin dudar! Nos ha ayudado a mejorar todas nuestras estrategias."</p>
                 <h4 id="client3Name">Linda Johnson</h4>
-                <p id="client3Title">Founder, StartSmart</p>
+                <p id="client3Title">Fundadora, StartSmart</p>
             </div>
         </div>
     </section>
 
     <!-- Sección de Contacto -->
     <section class="contact" id="contact">
-        <h2 id="contactTitle">Get in Touch</h2>
+        <h2 id="contactTitle">Hablemos</h2>
         <form action="submit_form.php" method="post">
-            <label for="name" id="labelName">Name:</label>
+            <label for="name" id="labelName">Nombre:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email" id="labelEmail">Email:</label>
+            <label for="email" id="labelEmail">Correo Electrónico:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="message" id="labelMessage">Message:</label>
+            <label for="message" id="labelMessage">Mensaje:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
 
-            <button type="submit" id="sendButton">Send Message</button>
+            <button type="submit" id="sendButton">Enviar Mensaje</button>
         </form>
     </section>
-
-    <!-- JavaScript para traducción de idiomas (opcional) -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const translations = {
-                en: {
-                    menuCourses: "Discover Our Courses",
-                    menuTestimonials: "Testimonials",
-                    menuContact: "Contact",
-                    startButton: "Start Today",
-                    heading: "Transform Your Business with Artificial Intelligence in Just a Few Weeks",
-                    subheading: "Discover how AI can help you increase sales, automate processes, and make strategic decisions.",
-                    buttonText: "I Want to Learn AI Now!",
-                    coursesTitle: "Why Choose Our Courses?",
-                    course1: "From Beginner to Expert: Suitable for all levels.",
-                    course2: "Time-Saving Automation: Optimize repetitive tasks.",
-                    course3: "AI-Based Marketing Techniques: Conquer the market.",
-                    testimonialsTitle: "What Our Clients Say",
-                    testimonial1: `"AI Edupreneur's courses transformed our business! Now, we save hours every week."`,
-                    client1Name: "Jane Doe",
-                    client1Title: "CEO, Tech Solutions",
-                    testimonial2: `"Thanks to their AI course, our marketing improved significantly."`,
-                    client2Name: "John Smith",
-                    client2Title: "Marketing Director, SalesBoost",
-                    testimonial3: `"Highly recommend! The AI insights have been a game changer."`,
-                    client3Name: "Linda Johnson",
-                    client3Title: "Founder, StartSmart",
-                    contactTitle: "Get in Touch",
-                    labelName: "Name:",
-                    labelEmail: "Email:",
-                    labelMessage: "Message:",
-                    sendButton: "Send Message"
-                },
-                es: {
-                    menuCourses: "Descubre Nuestros Cursos",
-                    menuTestimonials: "Testimonios",
-                    menuContact: "Contacto",
-                    startButton: "Empieza Hoy",
-                    heading: "Transforma tu negocio con inteligencia artificial en solo unas semanas",
-                    subheading: "Descubre cómo la IA puede ayudarte a aumentar ventas, automatizar procesos y tomar decisiones estratégicas.",
-                    buttonText: "¡Quiero aprender IA ahora!",
-                    coursesTitle: "¿Por qué elegir nuestros cursos?",
-                    course1: "Desde cero hasta experto: Apto para todos los niveles.",
-                    course2: "Automatización que ahorra tiempo: Optimiza tareas repetitivas.",
-                    course3: "Técnicas de marketing basadas en IA: Conquista el mercado.",
-                    testimonialsTitle: "Lo que dicen nuestros clientes",
-                    testimonial1: `"¡Los cursos de AI Edupreneur transformaron nuestro negocio! Ahora, ahorramos horas cada semana."`,
-                    client1Name: "Jane Doe",
-                    client1Title: "CEO, Soluciones Tecnológicas",
-                    testimonial2: `"Gracias a su curso de IA, nuestro marketing mejoró significativamente."`,
-                    client2Name: "John Smith",
-                    client2Title: "Director de Marketing, SalesBoost",
-                    testimonial3: `"¡Altamente recomendable! Los conocimientos en IA han sido un cambio total."`,
-                    client3Name: "Linda Johnson",
-                    client3Title: "Fundadora, StartSmart",
-                    contactTitle: "Contáctanos",
-                    labelName: "Nombre:",
-                    labelEmail: "Correo electrónico:",
-                    labelMessage: "Mensaje:",
-                    sendButton: "Enviar mensaje"
-                }
-            };
-            
-            document.getElementById("language-selector").addEventListener("change", (event) => {
-                const language = event.target.value;
-                document.getElementById("menu-courses").textContent = translations[language].menuCourses;
-                document.getElementById("menu-testimonials").textContent = translations[language].menuTestimonials;
-                document.getElementById("menu-contact").textContent = translations[language].menuContact;
-                document.getElementById("start-button").textContent = translations[language].startButton;
-                document.getElementById("heading").textContent = translations[language].heading;
-                document.getElementById("subheading").textContent = translations[language].subheading;
-                document.getElementById("learn-button").textContent = translations[language].buttonText;
-                document.getElementById("coursesTitle").textContent = translations[language].coursesTitle;
-                document.getElementById("course1").textContent = translations[language].course1;
-                document.getElementById("course2").textContent = translations[language].course2;
-                document.getElementById("course3").textContent = translations[language].course3;
-                document.getElementById("testimonialsTitle").textContent = translations[language].testimonialsTitle;
-                document.getElementById("testimonial1").textContent = translations[language].testimonial1;
-                document.getElementById("client1Name").textContent = translations[language].client1Name;
-                document.getElementById("client1Title").textContent = translations[language].client1Title;
-                document.getElementById("testimonial2").textContent = translations[language].testimonial2;
-                document.getElementById("client2Name").textContent = translations[language].client2Name;
-                document.getElementById("client2Title").textContent = translations[language].client2Title;
-                document.getElementById("testimonial3").textContent = translations[language].testimonial3;
-                document.getElementById("client3Name").textContent = translations[language].client3Name;
-                document.getElementById("client3Title").textContent = translations[language].client3Title;
-                document.getElementById("contactTitle").textContent = translations[language].contactTitle;
-                document.getElementById("labelName").textContent = translations[language].labelName;
-                document.getElementById("labelEmail").textContent = translations[language].labelEmail;
-                document.getElementById("labelMessage").textContent = translations[language].labelMessage;
-                document.getElementById("sendButton").textContent = translations[language].sendButton;
-            });
-        });
-    </script>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const translations = {
+            en: {
+                menuCourses: "Discover Our Courses",
+                menuTestimonials: "Testimonials",
+                menuContact: "Contact",
+                startButton: "Start Today",
+                heading: "Transform Your Business with Artificial Intelligence in Just a Few Weeks",
+                subheading: "Discover how AI can help you increase sales, automate processes, and make strategic decisions.",
+                buttonText: "I Want to Learn AI Now!",
+                coursesTitle: "Why Choose Our Courses?",
+                course1: "From Beginner to Expert: Suitable for all levels.",
+                course2: "Time-Saving Automation: Optimize repetitive tasks.",
+                course3: "AI-Based Marketing Techniques: Conquer the market.",
+                testimonialsTitle: "What Our Clients Say",
+                testimonial1: `"AI Edupreneur's courses transformed our business! Now, we save hours every week."`,
+                client1Name: "Jane Doe",
+                client1Title: "CEO, Tech Solutions",
+                testimonial2: `"Thanks to their AI course, our marketing improved significantly."`,
+                client2Name: "John Smith",
+                client2Title: "Marketing Director, SalesBoost",
+                testimonial3: `"Highly recommend! The AI insights have been a game changer."`,
+                contactTitle: "Get in Touch",
+                labelName: "Name:",
+                labelEmail: "Email:",
+                labelMessage: "Message:",
+                sendButton: "Send Message"
+            },
+            es: {
+                menuCourses: "Explora Nuestros Cursos",
+                menuTestimonials: "Testimonios",
+                menuContact: "Contacto",
+                startButton: "Empieza Hoy",
+                heading: "IA para Líderes: Gana Terreno y Llévate el Mercado",
+                subheading: "Descubre cómo la IA puede disparar tus ventas y ayudarte a dominar tu sector.",
+                buttonText: "¡Quiero aprender IA ahora!",
+                coursesTitle: "¿Por qué elegir nuestros cursos?",
+                course1: "De Principiante a Experto: Lleva tus habilidades al siguiente nivel.",
+                course2: "Automatización Inteligente: Ahorra tiempo y optimiza procesos.",
+                course3: "Estrategias de Marketing con IA: Conquista tu mercado.",
+                testimonialsTitle: "Lo que dicen nuestros clientes",
+                testimonial1: `"¡Los cursos de AI Edupreneur transformaron nuestro negocio! Ahora, ahorramos horas cada semana."`,
+                client1Name: "Jane Doe",
+                client1Title: "CEO, Soluciones Tecnológicas",
+                testimonial2: `"Gracias a su curso de IA, nuestro marketing mejoró significativamente."`,
+                client2Name: "John Smith",
+                client2Title: "Director de Marketing, SalesBoost",
+                testimonial3: `"¡Altamente recomendable! Los conocimientos en IA han sido un cambio total."`,
+                contactTitle: "Contáctanos",
+                labelName: "Nombre:",
+                labelEmail: "Correo Electrónico:",
+                labelMessage: "Mensaje:",
+                sendButton: "Enviar Mensaje"
+            }
+        };
+
+        const languageSelector = document.getElementById("language-selector");
+        const menuCourses = document.getElementById("menu-courses");
+        const menuTestimonials = document.getElementById("menu-testimonials");
+        const menuContact = document.getElementById("menu-contact");
+        const startButton = document.getElementById("start-button");
+        const heading = document.getElementById("heading");
+        const subheading = document.getElementById("subheading");
+        const learnButton = document.getElementById("learn-button");
+        const coursesTitle = document.getElementById("coursesTitle");
+        const courseItems = [
+            document.getElementById("course1"),
+            document.getElementById("course2"),
+            document.getElementById("course3")
+        ];
+        const testimonialsTitle = document.getElementById("testimonialsTitle");
+        const testimonialTexts = [
+            document.getElementById("testimonial1"),
+            document.getElementById("testimonial2"),
+            document.getElementById("testimonial3")
+        ];
+        const clientNames = [
+            document.getElementById("client1Name"),
+            document.getElementById("client2Name"),
+            document.getElementById("client3Name")
+        ];
+        const clientTitles = [
+            document.getElementById("client1Title"),
+            document.getElementById("client2Title"),
+            document.getElementById("client3Title")
+        ];
+        const contactTitle = document.getElementById("contactTitle");
+        const labelName = document.getElementById("labelName");
+        const labelEmail = document.getElementById("labelEmail");
+        const labelMessage = document.getElementById("labelMessage");
+        const sendButton = document.getElementById("sendButton");
+
+        function changeLanguage(language) {
+            const translation = translations[language];
+            
+            menuCourses.textContent = translation.menuCourses;
+            menuTestimonials.textContent = translation.menuTestimonials;
+            menuContact.textContent = translation.menuContact;
+            startButton.textContent = translation.startButton;
+            heading.textContent = translation.heading;
+            subheading.textContent = translation.subheading;
+            learnButton.textContent = translation.buttonText;
+            coursesTitle.textContent = translation.coursesTitle;
+            courseItems[0].textContent = translation.course1;
+            courseItems[1].textContent = translation.course2;
+            courseItems[2].textContent = translation.course3;
+            testimonialsTitle.textContent = translation.testimonialsTitle;
+            testimonialTexts[0].textContent = translation.testimonial1;
+            testimonialTexts[1].textContent = translation.testimonial2;
+            testimonialTexts[2].textContent = translation.testimonial3;
+            clientNames[0].textContent = translation.client1Name;
+            clientNames[1].textContent = translation.client2Name;
+            clientNames[2].textContent = translation.client3Name;
+            clientTitles[0].textContent = translation.client1Title;
+            clientTitles[1].textContent = translation.client2Title;
+            clientTitles[2].textContent = translation.client3Title;
+            contactTitle.textContent = translation.contactTitle;
+            labelName.textContent = translation.labelName;
+            labelEmail.textContent = translation.labelEmail;
+            labelMessage.textContent = translation.labelMessage;
+            sendButton.textContent = translation.sendButton;
+        }
+
+        // Sincronizar el selector de idioma con el idioma actual
+        function syncLanguageSelector(language) {
+            languageSelector.value = language;
+        }
+
+        // Cambiar el idioma basado en la selección del usuario
+        languageSelector.addEventListener("change", (event) => {
+            const selectedLanguage = event.target.value;
+            changeLanguage(selectedLanguage);
+            syncLanguageSelector(selectedLanguage); // Sincroniza el selector
+        });
+
+        // Detectar el idioma del navegador al cargar
+        function detectLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const language = userLang.includes('es') ? 'es' : 'en';
+            changeLanguage(language); // Cambiar el contenido según el idioma detectado
+            syncLanguageSelector(language); // Sincronizar el selector
+        }
+
+        detectLanguage(); // Ejecutar la detección de idioma al cargar
+    });
+</script>
 </html>
