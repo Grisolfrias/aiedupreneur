@@ -5,7 +5,7 @@ body {
     background: linear-gradient(135deg, #0D1B2A 30%, #1F3C88 60%, #121212 100%);
     margin: 0;
     padding: 0;
-    line-height: 1.6; /* Mejora la legibilidad */
+    line-height: 1.6;
 }
 
 /* Header */
@@ -17,7 +17,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo sólido */
     z-index: 1000;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
 }
@@ -26,11 +26,17 @@ header img.logo {
     height: 80px;
 }
 
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 header nav a {
     color: #E0E0E0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin: 0 15px;
+    margin: 0 20px;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -39,6 +45,59 @@ header nav a:hover {
     color: #17BEBB;
 }
 
+/* Menú hamburguesa para dispositivos móviles */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none; /* Ocultar el menú por defecto en móvil */
+    }
+
+    nav.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Justo debajo del header */
+        left: 0;
+        width: 100%; /* Ocupa todo el ancho de la pantalla */
+        background-color: #1A1A2E; /* Fondo del menú */
+        padding: 20px 0;
+        z-index: 999; /* Asegura que el menú esté sobre el contenido */
+    }
+
+    nav.active a {
+        margin: 15px 0; /* Más espacio entre los enlaces */
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: flex; /* Mostrar el icono hamburguesa en móvil */
+    }
+}
+
+/* Selector de idioma */
+#language-selector {
+    margin-left: 20px;
+    padding: 8px 15px;
+    background-color: #17BEBB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Botones */
 .cta-button, .cta-button-big {
     background: linear-gradient(90deg, #17BEBB, #1F3C88);
     color: white;
@@ -155,36 +214,35 @@ header nav a:hover {
 
 /* Sección de contacto */
 .contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima de pantalla */
     padding: 70px 20px;
     background: linear-gradient(180deg, #121212, #000000);
     color: white;
     text-align: center;
 }
 
-.contact h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
-    margin-bottom: 40px;
-    color: #17BEBB;
-}
-
 .contact form {
-    max-width: 450px;
+    width: 100%;
+    max-width: 600px; /* Ancho máximo para pantallas grandes */
     margin: 0 auto;
     background-color: #0D1B2A;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px;
+    border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .contact input, .contact textarea {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     margin-bottom: 15px;
     border: 2px solid #444;
     background-color: #1A1A2E;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     border-radius: 8px;
     outline: none;
 }
@@ -211,14 +269,7 @@ header nav a:hover {
     box-shadow: 0px 6px 20px rgba(31, 60, 136, 0.6);
 }
 
-/* Ajustes del reCAPTCHA */
-.g-recaptcha {
-    margin-bottom: 20px;
-    transform: scale(1.1);
-    transform-origin: 0 0;
-}
-
-/* Botón de WhatsApp */
+/* Ajustes del botón de WhatsApp */
 .whatsapp-widget {
     position: fixed;
     bottom: 20px;
@@ -240,27 +291,44 @@ header nav a:hover {
     transform: scale(1.1);
 }
 
-/* Menú hamburguesa */
-.menu-toggle {
-    display: block;
-    cursor: pointer;
-}
+/* Media Queries */
+@media (max-width: 768px) {
+    .intro h1 {
+        font-size: 2.5rem;
+    }
+    
+    .cta-button, .cta-button-big {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
 
-.menu-toggle div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px;
-}
+    .intro p {
+        font-size: 1.1rem;
+    }
 
-nav ul {
-    display: none;
-}
+    .testimonial-container {
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* Menú cuando está activo */
-nav.active ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #121212;
+    .contact form {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .contact input, .contact textarea {
+        padding: 12px;
+    }
+
+    /* Botón de WhatsApp más pequeño en móvil */
+    .whatsapp-widget {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+    }
+
+    .whatsapp-widget img {
+        width: 35px;
+        height: 35px;
+    }
 }
