@@ -17,48 +17,90 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        /* Ajustes para el video de fondo */
-        .video-embed-container {
-            width: 100%;
-            max-width: 100%;
-            height: 0;
-            position: relative;
-            padding-top: 56.25%;
-            overflow: hidden;
-        }
-        .video-embed-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            background: linear-gradient(135deg, #0D1B2A 30%, #1F3C88 60%, #121212 100%);
+            color: #E0E0E0;
         }
 
         /* Menú y cabecera */
-        nav {
+        header {
+            background-color: #1A1A2E;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #1A1A2E;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
-        nav a {
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
             font-size: 1rem;
         }
 
-        .cta-button {
-            background-color: #17BEBB;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
+        nav ul a:hover {
+            color: #17BEBB;
+        }
+
+        /* Botón de hamburguesa para móvil */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px;
+        }
+
+        /* Estilos del menú para móviles */
+        nav ul {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                background-color: #1A1A2E;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            nav.active ul {
+                display: flex;
+            }
+
+            /* Mostrar el botón de hamburguesa en móviles */
+            .menu-toggle {
+                display: flex;
+            }
         }
 
         /* Selector de idioma */
@@ -71,20 +113,38 @@
             color: white;
             border: none;
             cursor: pointer;
-            float: right; /* Alinea el selector a la derecha */
+        }
+
+        /* Video de fondo */
+        .video-embed-container {
+            width: 100%;
+            max-width: 100%;
+            height: 0;
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .video-embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Ajustes para el formulario de contacto */
         .contact form {
             max-width: 600px;
-            margin: 0 auto; /* Centramos el formulario */
+            margin: 0 auto;
             padding: 20px;
             background-color: #1A1A2E;
             border-radius: 10px;
         }
 
         .contact input, .contact textarea {
-            width: 100%; /* Ajustamos el ancho al 100% */
+            width: 100%;
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #444;
@@ -94,9 +154,8 @@
             font-size: 1.1rem;
         }
 
-        /* Ajustamos el área de texto del formulario */
         .contact textarea {
-            height: 150px; /* Ajustamos la altura del textarea */
+            height: 150px;
             resize: vertical;
         }
 
@@ -110,32 +169,65 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        /* Responsivo para móviles */
+        .contact button:hover {
+            background-color: #1F3C88;
+            transform: scale(1.05);
+        }
+
+        /* Botón de WhatsApp */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #17BEBB;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .whatsapp-widget img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .whatsapp-widget:hover {
+            background-color: #1F3C88;
+            transform: scale(1.1);
+        }
+
+        /* Media Queries para mejorar la UX móvil */
         @media (max-width: 768px) {
-            nav {
+            nav ul {
                 flex-direction: column;
             }
 
+            .menu-toggle {
+                display: flex;
+            }
+
             nav a {
-                margin: 10px 0;
+                margin: 15px 0;
+                font-size: 1.2rem;
             }
 
             #language-selector {
-                float: none;
-                margin-top: 10px;
+                margin: 15px 0;
             }
 
             .contact form {
-                padding: 10px 15px;
+                padding: 15px;
             }
 
-            .contact input, .contact textarea {
-                font-size: 1rem;
+            .whatsapp-widget {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px;
             }
 
-            .contact button {
-                font-size: 1rem;
-                padding: 12px 24px;
+            .whatsapp-widget img {
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
@@ -144,7 +236,7 @@
 </head>
 <body>
     <header>
-        <img class="logo" src="AI EDUPRENEUR-logo-3.png" alt="Logo AI Edupreneur">
+        <img class="logo" src="images/AI EDUPRENEUR-logo-3.png" alt="Logo AI Edupreneur">
         
         <!-- Botón de hamburguesa para móviles -->
         <div class="menu-toggle" onclick="toggleMenu()">
@@ -154,22 +246,25 @@
         </div>
 
         <nav>
-            <a href="#courses" id="menu-courses">Discover Our Courses</a>
-            <a href="#testimonials" id="menu-testimonials">Testimonials</a>
-            <a href="#contact" id="menu-contact">Contact</a>
-            <a href="#start" class="cta-button" id="start-button">Start Today</a>
-            <!-- Botón de selección de idioma actualizado -->
-            <select id="language-selector">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-            </select>
+            <ul>
+                <li><a href="#courses" id="menu-courses">Discover Our Courses</a></li>
+                <li><a href="#testimonials" id="menu-testimonials">Testimonials</a></li>
+                <li><a href="#contact" id="menu-contact">Contact</a></li>
+                <li><a href="#start" class="cta-button" id="start-button">Start Today</a></li>
+                <li>
+                    <select id="language-selector">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </li>
+            </ul>
         </nav>
     </header>
 
     <script>
         function toggleMenu() {
-            document.querySelector('nav').classList.toggle('active');
-            document.querySelector('.menu-toggle').classList.toggle('active');
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
         }
     </script>
 
@@ -184,11 +279,6 @@
                 allowfullscreen>
             </iframe>
         </div>
-
-        <video id="backgroundVideo" autoplay muted loop playsinline class="background-video">
-            <source src="videos/ai-brain.mp4" type="video/mp4">
-            Tu navegador no soporta el video en formato .mp4.
-        </video>
 
         <h1 id="heading">IA para Líderes: Gana Terreno y Llévate el Mercado</h1>
         <p id="subheading">Descubre cómo la Inteligencia Artificial puede disparar tus ventas, automatizar procesos y hacerte dominar tu sector. No te quedes atrás.</p>
@@ -248,24 +338,13 @@
         </form>
     </section>
 
-    <!-- Script de Tawk.to (chat en vivo) -->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function(){
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/YOUR_TAWK_PROPERTY_ID/DEFAULT';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-
+    <!-- Botón de WhatsApp -->
     <a href="https://wa.me/17076087610?text=Hola%20estoy%20interesado%20en%20tus%20cursos" 
        target="_blank" class="whatsapp-widget">
-       <img src="whatsapp icon.png" alt="WhatsApp Chat">
+       <img src="images/whatsapp icon.png" alt="WhatsApp Chat">
     </a>
 
+    <!-- Traducción del contenido -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const translations = {
