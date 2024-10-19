@@ -7,17 +7,27 @@
     <title>AI Edupreneur</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Contenedor del video responsivo */
+        /* Estilos generales */
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-touch-callout: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Ajustes para el video de fondo */
         .video-embed-container {
             width: 100%;
             max-width: 100%;
             height: 0;
             position: relative;
-            padding-top: 56.25%; /* Proporción 16:9 */
+            padding-top: 56.25%;
             overflow: hidden;
-            display: block; /* Los iframes estarán visibles por defecto */
         }
-        /* Estilo para el iframe dentro del contenedor */
         .video-embed-container iframe {
             position: absolute;
             top: 0;
@@ -26,57 +36,144 @@
             height: 100%;
             border: none;
         }
-        /* Fondo de video local */
-        .background-video {
-            width: 100%;
-            height: auto;
-            display: none; /* Ocultar video local al principio */
+
+        /* Menú y cabecera */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1A1A2E;
         }
-        /* Protección básica contra copia */
-        body {
-            user-select: none; /* Evita la selección de texto */
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
         }
-        /* Deshabilita el botón derecho */
-        body {
-            -webkit-touch-callout: none;
+
+        .cta-button {
+            background-color: #17BEBB;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Selector de idioma */
+        #language-selector {
+            font-size: 1rem;
+            padding: 5px 10px;
+            margin-left: 15px;
+            border-radius: 5px;
+            background-color: #17BEBB;
+            color: white;
+            border: none;
+            cursor: pointer;
+            float: right; /* Alinea el selector a la derecha */
+        }
+
+        /* Ajustes para el formulario de contacto */
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto; /* Centramos el formulario */
+            padding: 20px;
+            background-color: #1A1A2E;
+            border-radius: 10px;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%; /* Ajustamos el ancho al 100% */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            background-color: #2C2C3E;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* Ajustamos el área de texto del formulario */
+        .contact textarea {
+            height: 150px; /* Ajustamos la altura del textarea */
+            resize: vertical;
+        }
+
+        .contact button {
+            background: #17BEBB;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Responsivo para móviles */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 10px 0;
+            }
+
+            #language-selector {
+                float: none;
+                margin-top: 10px;
+            }
+
+            .contact form {
+                padding: 10px 15px;
+            }
+
+            .contact input, .contact textarea {
+                font-size: 1rem;
+            }
+
+            .contact button {
+                font-size: 1rem;
+                padding: 12px 24px;
+            }
         }
     </style>
+    <!-- Script de Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
-<header>
-    <img class="logo" src="AI EDUPRENEUR-logo-3.png" alt="Logo AI Edupreneur">
-    
-    <!-- Botón de hamburguesa para móviles -->
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+    <header>
+        <img class="logo" src="images/AI EDUPRENEUR-logo-3.png" alt="Logo AI Edupreneur">
+        
+        <!-- Botón de hamburguesa para móviles -->
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
 
-    <nav>
-        <a href="#courses">Discover Our Courses</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
-        <a href="#start" class="cta-button">Start Today</a>
-        <select id="language-selector">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-        </select>
-    </nav>
-</header>
+        <nav>
+            <a href="#courses" id="menu-courses">Discover Our Courses</a>
+            <a href="#testimonials" id="menu-testimonials">Testimonials</a>
+            <a href="#contact" id="menu-contact">Contact</a>
+            <a href="#start" class="cta-button" id="start-button">Start Today</a>
+            <!-- Botón de selección de idioma actualizado -->
+            <select id="language-selector">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
+        </nav>
+    </header>
 
-<script>
-    function toggleMenu() {
-        document.querySelector('nav').classList.toggle('active');
-        document.querySelector('.menu-toggle').classList.toggle('active');
-    }
-</script>
+    <script>
+        function toggleMenu() {
+            document.querySelector('nav').classList.toggle('active');
+            document.querySelector('.menu-toggle').classList.toggle('active');
+        }
+    </script>
 
     <section class="intro">
-        <!-- Contenedor del Video de YouTube (prioridad) -->
         <div id="youtubeVideoContainer" class="video-embed-container">
             <iframe 
                 src="https://www.youtube.com/embed/MOdPFFfO7QU?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" 
@@ -88,19 +185,16 @@
             </iframe>
         </div>
 
-        <!-- Video Local en formato .mp4 (opción secundaria) -->
         <video id="backgroundVideo" autoplay muted loop playsinline class="background-video">
             <source src="videos/ai-brain.mp4" type="video/mp4">
             Tu navegador no soporta el video en formato .mp4.
         </video>
 
-        <!-- Contenido de texto principal -->
         <h1 id="heading">IA para Líderes: Gana Terreno y Llévate el Mercado</h1>
         <p id="subheading">Descubre cómo la Inteligencia Artificial puede disparar tus ventas, automatizar procesos y hacerte dominar tu sector. No te quedes atrás.</p>
-        <button id="learn-button" class="cta-button-big">¡Quiero Aprender IA Ahora!</button>
+        <button id="learn-button" class="cta-button-big">Automatiza tu Negocio Hoy</button>
     </section>
 
-    <!-- Sección de Cursos -->
     <section class="courses-overview" id="courses">
         <h2 id="coursesTitle">¿Por Qué Elegir Nuestros Cursos?</h2>
         <div class="separator"></div>
@@ -111,7 +205,6 @@
         </ul>
     </section>
 
-    <!-- Sección de Testimonios -->
     <section class="testimonials" id="testimonials">
         <h2 id="testimonialsTitle">Lo Que Dicen Nuestros Clientes</h2>
         <div class="testimonial-container">
@@ -136,185 +229,145 @@
         </div>
     </section>
 
-    <!-- Sección de Contacto -->
     <section class="contact" id="contact">
         <h2 id="contactTitle">Hablemos</h2>
-        <form action="submit_form.php" method="post">
-            <label for="name" id="labelName">Nombre:</label>
+        <form id="contactForm" action="submit_form.php" method="post">
+            <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email" id="labelEmail">Correo Electrónico:</label>
+            <label for="email">Correo Electrónico:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="message" id="labelMessage">Mensaje:</label>
+            <label for="message">Mensaje:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
 
-            <button type="submit" id="sendButton">Enviar Mensaje</button>
+            <!-- Turnstile widget de Cloudflare -->
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAx1T2_kRlAH0K9N"></div>
+
+            <button type="submit">Enviar Mensaje</button>
         </form>
     </section>
-<script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function(){
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/YOUR_TAWK_PROPERTY_ID/DEFAULT';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
-<a href="https://wa.me/17076087610?text=Hola%20estoy%20interesado%20en%20tus%20cursos" 
-   target="_blank" class="whatsapp-widget">
-   <img src="whatsapp icon.png" alt="WhatsApp Chat">
-</a>
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const translations = {
-            en: {
-                menuCourses: "Discover Our Courses",
-                menuTestimonials: "Testimonials",
-                menuContact: "Contact",
-                startButton: "Start Today",
-                heading: "Transform Your Business with Artificial Intelligence in Just a Few Weeks",
-                subheading: "Discover how AI can help you increase sales, automate processes, and make strategic decisions.",
-                buttonText: "I Want to Learn AI Now!",
-                coursesTitle: "Why Choose Our Courses?",
-                course1: "From Beginner to Expert: Suitable for all levels.",
-                course2: "Time-Saving Automation: Optimize repetitive tasks.",
-                course3: "AI-Based Marketing Techniques: Conquer the market.",
-                testimonialsTitle: "What Our Clients Say",
-                testimonial1: `"AI Edupreneur's courses transformed our business! Now, we save hours every week."`,
-                client1Name: "Jane Doe",
-                client1Title: "CEO, Tech Solutions",
-                testimonial2: `"Thanks to their AI course, our marketing improved significantly."`,
-                client2Name: "John Smith",
-                client2Title: "Marketing Director, SalesBoost",
-                testimonial3: `"Highly recommend! The AI insights have been a game changer."`,
-                contactTitle: "Get in Touch",
-                labelName: "Name:",
-                labelEmail: "Email:",
-                labelMessage: "Message:",
-                sendButton: "Send Message"
-            },
-            es: {
-                menuCourses: "Explora Nuestros Cursos",
-                menuTestimonials: "Testimonios",
-                menuContact: "Contacto",
-                startButton: "Empieza Hoy",
-                heading: "IA para Líderes: Gana Terreno y Llévate el Mercado",
-                subheading: "Descubre cómo la IA puede disparar tus ventas y ayudarte a dominar tu sector.",
-                buttonText: "¡Quiero aprender IA ahora!",
-                coursesTitle: "¿Por qué elegir nuestros cursos?",
-                course1: "De Principiante a Experto: Lleva tus habilidades al siguiente nivel.",
-                course2: "Automatización Inteligente: Ahorra tiempo y optimiza procesos.",
-                course3: "Estrategias de Marketing con IA: Conquista tu mercado.",
-                testimonialsTitle: "Lo que dicen nuestros clientes",
-                testimonial1: `"¡Los cursos de AI Edupreneur transformaron nuestro negocio! Ahora, ahorramos horas cada semana."`,
-                client1Name: "Jane Doe",
-                client1Title: "CEO, Soluciones Tecnológicas",
-                testimonial2: `"Gracias a su curso de IA, nuestro marketing mejoró significativamente."`,
-                client2Name: "John Smith",
-                client2Title: "Director de Marketing, SalesBoost",
-                testimonial3: `"¡Altamente recomendable! Los conocimientos en IA han sido un cambio total."`,
-                contactTitle: "Contáctanos",
-                labelName: "Nombre:",
-                labelEmail: "Correo Electrónico:",
-                labelMessage: "Mensaje:",
-                sendButton: "Enviar Mensaje"
+
+    <!-- Script de Tawk.to (chat en vivo) -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function(){
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/YOUR_TAWK_PROPERTY_ID/DEFAULT';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <a href="https://wa.me/17076087610?text=Hola%20estoy%20interesado%20en%20tus%20cursos" 
+       target="_blank" class="whatsapp-widget">
+       <img src="images/whatsapp icon.png" alt="WhatsApp Chat">
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const translations = {
+                en: {
+                    menuCourses: "Discover Our Courses",
+                    menuTestimonials: "Testimonials",
+                    menuContact: "Contact",
+                    startButton: "Start Today",
+                    heading: "Transform Your Business with Artificial Intelligence in Just a Few Weeks",
+                    subheading: "Discover how AI can help you increase sales, automate processes, and make strategic decisions.",
+                    buttonText: "Automate Your Business Today",
+                    coursesTitle: "Why Choose Our Courses?",
+                    course1: "From Beginner to Expert: Suitable for all levels.",
+                    course2: "Time-Saving Automation: Optimize repetitive tasks.",
+                    course3: "AI-Based Marketing Techniques: Conquer the market.",
+                    testimonialsTitle: "What Our Clients Say",
+                    testimonial1: `"AI Edupreneur's courses transformed our business! Now, we save hours every week."`,
+                    client1Name: "Jane Doe",
+                    client1Title: "CEO, Tech Solutions",
+                    testimonial2: `"Thanks to their AI course, our marketing improved significantly."`,
+                    client2Name: "John Smith",
+                    client2Title: "Marketing Director, SalesBoost",
+                    testimonial3: `"Highly recommend! The AI insights have been a game changer."`,
+                    contactTitle: "Get in Touch",
+                    labelName: "Name:",
+                    labelEmail: "Email:",
+                    labelMessage: "Message:",
+                    sendButton: "Send Message"
+                },
+                es: {
+                    menuCourses: "Explora Nuestros Cursos",
+                    menuTestimonials: "Testimonios",
+                    menuContact: "Contacto",
+                    startButton: "Empieza Hoy",
+                    heading: "IA para Líderes: Gana Terreno y Llévate el Mercado",
+                    subheading: "Descubre cómo la IA puede disparar tus ventas y ayudarte a dominar tu sector.",
+                    buttonText: "Automatiza tu Negocio Hoy",
+                    coursesTitle: "¿Por qué elegir nuestros cursos?",
+                    course1: "De Principiante a Experto: Lleva tus habilidades al siguiente nivel.",
+                    course2: "Automatización Inteligente: Ahorra tiempo y optimiza procesos.",
+                    course3: "Estrategias de Marketing con IA: Conquista tu mercado.",
+                    testimonialsTitle: "Lo que dicen nuestros clientes",
+                    testimonial1: `"¡Los cursos de AI Edupreneur transformaron nuestro negocio! Ahora, ahorramos horas cada semana."`,
+                    client1Name: "Jane Doe",
+                    client1Title: "CEO, Soluciones Tecnológicas",
+                    testimonial2: `"Gracias a su curso de IA, nuestro marketing mejoró significativamente."`,
+                    client2Name: "John Smith",
+                    client2Title: "Director de Marketing, SalesBoost",
+                    testimonial3: `"¡Altamente recomendable! Los conocimientos en IA han sido un cambio total."`,
+                    contactTitle: "Contáctanos",
+                    labelName: "Nombre:",
+                    labelEmail: "Correo Electrónico:",
+                    labelMessage: "Mensaje:",
+                    sendButton: "Enviar Mensaje"
+                }
+            };
+
+            function changeLanguage(language) {
+                const translation = translations[language];
+                
+                document.getElementById("menu-courses").textContent = translation.menuCourses;
+                document.getElementById("menu-testimonials").textContent = translation.menuTestimonials;
+                document.getElementById("menu-contact").textContent = translation.menuContact;
+                document.getElementById("start-button").textContent = translation.startButton;
+                document.getElementById("heading").textContent = translation.heading;
+                document.getElementById("subheading").textContent = translation.subheading;
+                document.getElementById("learn-button").textContent = translation.buttonText;
+                document.getElementById("coursesTitle").textContent = translation.coursesTitle;
+                document.getElementById("course1").textContent = translation.course1;
+                document.getElementById("course2").textContent = translation.course2;
+                document.getElementById("course3").textContent = translation.course3;
+                document.getElementById("testimonialsTitle").textContent = translation.testimonialsTitle;
+                document.getElementById("testimonial1").textContent = translation.testimonial1;
+                document.getElementById("testimonial2").textContent = translation.testimonial2;
+                document.getElementById("testimonial3").textContent = translation.testimonial3;
+                document.getElementById("client1Name").textContent = translation.client1Name;
+                document.getElementById("client1Title").textContent = translation.client1Title;
+                document.getElementById("client2Name").textContent = translation.client2Name;
+                document.getElementById("client2Title").textContent = translation.client2Title;
+                document.getElementById("client3Name").textContent = translation.client3Name;
+                document.getElementById("client3Title").textContent = translation.client3Title;
+                document.getElementById("contactTitle").textContent = translation.contactTitle;
+                document.getElementById("labelName").textContent = translation.labelName;
+                document.getElementById("labelEmail").textContent = translation.labelEmail;
+                document.getElementById("labelMessage").textContent = translation.labelMessage;
+                document.getElementById("sendButton").textContent = translation.sendButton;
             }
-        };
 
-        const languageSelector = document.getElementById("language-selector");
-        const menuCourses = document.getElementById("menu-courses");
-        const menuTestimonials = document.getElementById("menu-testimonials");
-        const menuContact = document.getElementById("menu-contact");
-        const startButton = document.getElementById("start-button");
-        const heading = document.getElementById("heading");
-        const subheading = document.getElementById("subheading");
-        const learnButton = document.getElementById("learn-button");
-        const coursesTitle = document.getElementById("coursesTitle");
-        const courseItems = [
-            document.getElementById("course1"),
-            document.getElementById("course2"),
-            document.getElementById("course3")
-        ];
-        const testimonialsTitle = document.getElementById("testimonialsTitle");
-        const testimonialTexts = [
-            document.getElementById("testimonial1"),
-            document.getElementById("testimonial2"),
-            document.getElementById("testimonial3")
-        ];
-        const clientNames = [
-            document.getElementById("client1Name"),
-            document.getElementById("client2Name"),
-            document.getElementById("client3Name")
-        ];
-        const clientTitles = [
-            document.getElementById("client1Title"),
-            document.getElementById("client2Title"),
-            document.getElementById("client3Title")
-        ];
-        const contactTitle = document.getElementById("contactTitle");
-        const labelName = document.getElementById("labelName");
-        const labelEmail = document.getElementById("labelEmail");
-        const labelMessage = document.getElementById("labelMessage");
-        const sendButton = document.getElementById("sendButton");
+            const languageSelector = document.getElementById("language-selector");
+            languageSelector.addEventListener("change", function () {
+                changeLanguage(this.value);
+            });
 
-        function changeLanguage(language) {
-            const translation = translations[language];
-            
-            menuCourses.textContent = translation.menuCourses;
-            menuTestimonials.textContent = translation.menuTestimonials;
-            menuContact.textContent = translation.menuContact;
-            startButton.textContent = translation.startButton;
-            heading.textContent = translation.heading;
-            subheading.textContent = translation.subheading;
-            learnButton.textContent = translation.buttonText;
-            coursesTitle.textContent = translation.coursesTitle;
-            courseItems[0].textContent = translation.course1;
-            courseItems[1].textContent = translation.course2;
-            courseItems[2].textContent = translation.course3;
-            testimonialsTitle.textContent = translation.testimonialsTitle;
-            testimonialTexts[0].textContent = translation.testimonial1;
-            testimonialTexts[1].textContent = translation.testimonial2;
-            testimonialTexts[2].textContent = translation.testimonial3;
-            clientNames[0].textContent = translation.client1Name;
-            clientNames[1].textContent = translation.client2Name;
-            clientNames[2].textContent = translation.client3Name;
-            clientTitles[0].textContent = translation.client1Title;
-            clientTitles[1].textContent = translation.client2Title;
-            clientTitles[2].textContent = translation.client3Title;
-            contactTitle.textContent = translation.contactTitle;
-            labelName.textContent = translation.labelName;
-            labelEmail.textContent = translation.labelEmail;
-            labelMessage.textContent = translation.labelMessage;
-            sendButton.textContent = translation.sendButton;
-        }
+            function detectLanguage() {
+                const userLang = navigator.language || navigator.userLanguage;
+                const language = userLang.includes('es') ? 'es' : 'en';
+                changeLanguage(language);
+                languageSelector.value = language;
+            }
 
-
-        // Sincronizar el selector de idioma con el idioma actual
-        function syncLanguageSelector(language) {
-            languageSelector.value = language;
-        }
-
-        // Cambiar el idioma basado en la selección del usuario
-        languageSelector.addEventListener("change", (event) => {
-            const selectedLanguage = event.target.value;
-            changeLanguage(selectedLanguage);
-            syncLanguageSelector(selectedLanguage); // Sincroniza el selector
+            detectLanguage();
         });
-
-        // Detectar el idioma del navegador al cargar
-        function detectLanguage() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const language = userLang.includes('es') ? 'es' : 'en';
-            changeLanguage(language); // Cambiar el contenido según el idioma detectado
-            syncLanguageSelector(language); // Sincronizar el selector
-        }
-
-        detectLanguage(); // Ejecutar la detección de idioma al cargar
-    });
-</script>
-
+    </script>
+</body>
 </html>
