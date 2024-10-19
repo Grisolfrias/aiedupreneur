@@ -1,11 +1,18 @@
-<script>
-    // Función para mostrar/ocultar el menú de navegación en pantallas pequeñas
-    function toggleMenu() {
+// Función para mostrar/ocultar el menú de navegación en pantallas pequeñas
+function toggleMenu() {
+    const nav = document.querySelector('nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    nav.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+}
+
+// Cerrar el menú al hacer clic en un enlace
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function() {
         const nav = document.querySelector('nav');
-        const menuToggle = document.querySelector('.menu-toggle');
-        nav.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    }
+        nav.classList.remove('active');
+    });
+});
 
     // Función para cambiar el idioma del contenido
     document.addEventListener("DOMContentLoaded", function() {
