@@ -62,11 +62,15 @@
             color: #17BEBB;
         }
 
-        /* Botón de hamburguesa para móvil */
+        /* Botón de hamburguesa para móviles */
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            z-index: 1001;
         }
 
         .menu-toggle div {
@@ -74,6 +78,7 @@
             height: 3px;
             background-color: white;
             margin: 4px;
+            transition: all 0.3s ease;
         }
 
         /* Estilos del menú para móviles */
@@ -101,6 +106,30 @@
             .menu-toggle {
                 display: flex;
             }
+
+            /* Posicionar el selector de idioma para móviles */
+            .language-container {
+                position: absolute;
+                top: 10px;
+                right: 70px;
+            }
+
+            /* Animaciones para el ícono de hamburguesa */
+            .menu-toggle.active div:nth-child(1) {
+                transform: rotate(45deg);
+                position: relative;
+                top: 8px;
+            }
+
+            .menu-toggle.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active div:nth-child(3) {
+                transform: rotate(-45deg);
+                position: relative;
+                top: -8px;
+            }
         }
 
         /* Selector de idioma */
@@ -121,7 +150,7 @@
             max-width: 100%;
             height: 0;
             position: relative;
-            padding-top: 56.25%;
+            padding-top: 56.25%; /* Mantener la proporción 16:9 */
             overflow: hidden;
         }
 
@@ -211,10 +240,6 @@
                 font-size: 1.2rem;
             }
 
-            #language-selector {
-                margin: 15px 0;
-            }
-
             .contact form {
                 padding: 15px;
             }
@@ -229,6 +254,12 @@
                 width: 35px;
                 height: 35px;
             }
+
+            /* Ajuste del tamaño del video para móviles */
+            .video-embed-container {
+                padding-top: 56.25%;
+                height: auto;
+            }
         }
     </style>
     <!-- Script de Cloudflare Turnstile -->
@@ -236,8 +267,8 @@
 </head>
 <body>
     <header>
-        <img class="logo" src="AI EDUPRENEUR-logo-3.png" alt="Logo AI Edupreneur">
-        
+        <img class="logo" src="images/AI EDUPRENEUR-logo-3.png" alt="Logo AI Edupreneur">
+
         <!-- Botón de hamburguesa para móviles -->
         <div class="menu-toggle" onclick="toggleMenu()">
             <div></div>
@@ -251,29 +282,40 @@
                 <li><a href="#testimonials" id="menu-testimonials">Testimonials</a></li>
                 <li><a href="#contact" id="menu-contact">Contact</a></li>
                 <li><a href="#start" class="cta-button" id="start-button">Start Today</a></li>
-                <li>
-                    <select id="language-selector">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                    </select>
-                </li>
             </ul>
         </nav>
+
+        <!-- Selector de idioma fuera del menú desplegable -->
+        <div class="language-container">
+            <select id="language-selector">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
     </header>
 
     <script>
         function toggleMenu() {
             const nav = document.querySelector('nav');
+            const menuToggle = document.querySelector('.menu-toggle');
             nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         }
+
+        // Cerrar el menú cuando se hace clic en un enlace
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                const nav = document.querySelector('nav');
+                nav.classList.remove('active');
+                document.querySelector('.menu-toggle').classList.remove('active');
+            });
+        });
     </script>
 
     <section class="intro">
         <div id="youtubeVideoContainer" class="video-embed-container">
             <iframe 
                 src="https://www.youtube.com/embed/MOdPFFfO7QU?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" 
-                width="560" 
-                height="315" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
@@ -285,6 +327,7 @@
         <button id="learn-button" class="cta-button-big">Automatiza tu Negocio Hoy</button>
     </section>
 
+    <!-- Sección de Cursos -->
     <section class="courses-overview" id="courses">
         <h2 id="coursesTitle">¿Por Qué Elegir Nuestros Cursos?</h2>
         <div class="separator"></div>
@@ -295,6 +338,7 @@
         </ul>
     </section>
 
+    <!-- Sección de Testimonios -->
     <section class="testimonials" id="testimonials">
         <h2 id="testimonialsTitle">Lo Que Dicen Nuestros Clientes</h2>
         <div class="testimonial-container">
@@ -319,6 +363,7 @@
         </div>
     </section>
 
+    <!-- Sección de Contacto -->
     <section class="contact" id="contact">
         <h2 id="contactTitle">Hablemos</h2>
         <form id="contactForm" action="submit_form.php" method="post">
@@ -341,7 +386,7 @@
     <!-- Botón de WhatsApp -->
     <a href="https://wa.me/17076087610?text=Hola%20estoy%20interesado%20en%20tus%20cursos" 
        target="_blank" class="whatsapp-widget">
-       <img src="whatsapp icon.png" alt="WhatsApp Chat">
+       <img src="images/whatsapp icon.png" alt="WhatsApp Chat">
     </a>
 
     <!-- Traducción del contenido -->
