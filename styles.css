@@ -51,11 +51,12 @@ header nav a:hover {
     flex-direction: column;
     cursor: pointer;
     position: absolute;
-    right: 20px; /* Ajustamos el margen para que no se salga del borde */
-    top: 20px; /* Ajuste para alinear mejor verticalmente */
+    left: 50%;  /* Centramos horizontalmente */
+    transform: translateX(-50%);  /* Movemos el botón hacia la izquierda la mitad de su ancho */
+    top: 20px;
     z-index: 1002;
+    padding: 10px;  /* Espacio adicional alrededor del icono */
     background-color: transparent;
-    padding: 5px; /* Añadimos un poco de espacio interno */
 }
 
 .menu-toggle div {
@@ -69,8 +70,9 @@ header nav a:hover {
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
-        right: 15px; /* Ajustamos para que esté más alineado */
-        top: 20px; /* Ajuste para que no se superponga con otros elementos */
+        left: 50%;  /* Centramos en pantallas móviles */
+        transform: translateX(-50%);  /* Aseguramos que el icono quede completamente centrado */
+        top: 15px;
     }
 
     nav ul {
@@ -82,16 +84,80 @@ header nav a:hover {
         position: absolute;
         top: 60px;
         left: 0;
+        transition: transform 0.3s ease;  /* Transición suave */
+        transform: translateY(-100%);
     }
 
     nav.active ul {
         display: flex;
+        transform: translateY(0);  /* Mostrar menú con animación */
     }
 
     nav ul a {
         margin: 15px 0;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        color: #E0E0E0;
+        transition: color 0.3s ease, transform 0.3s ease; /* Animación de color */
     }
+
+    nav ul a:hover {
+        color: #17BEBB;
+        transform: scale(1.05); /* Animación ligera al pasar sobre el enlace */
+    }
+
+    .cta-button {
+        margin-top: 30px;
+        padding: 15px 35px;
+        font-size: 1.3rem;
+        background: linear-gradient(90deg, #17BEBB, #1F3C88);
+        box-shadow: 0px 6px 25px rgba(31, 60, 136, 0.6); /* Sombra de enfoque */
+    }
+
+    .cta-button:hover {
+        transform: scale(1.05);  /* Aumenta ligeramente al pasar sobre él */
+        background-color: #1F3C88;
+    }
+}
+
+/* Fondo semi-opaco cuando el menú está activo */
+.menu-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Mostrar fondo cuando el menú está activo */
+nav.active ~ .menu-background {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Animación para el menú hamburguesa */
+.menu-toggle div {
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+}
+
+.menu-toggle.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -8px;
 }
 
 /* Selector de idioma */
