@@ -324,6 +324,8 @@ nav.active ~ .menu-background {
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.6);
+    margin-bottom: 60px; /* Aumentamos el margen inferior para más espacio */
+    text-align: center; /* Centramos el texto en el formulario */
 }
 
 .contact input, .contact textarea {
@@ -362,7 +364,8 @@ nav.active ~ .menu-background {
 .whatsapp-widget {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 50%; /* Ajuste centrado horizontalmente */
+    transform: translateX(50%); /* Centramos el botón */
     background-color: #17BEBB;
     padding: 15px;
     border-radius: 50px;
@@ -371,14 +374,17 @@ nav.active ~ .menu-background {
     animation: pulse 3s infinite; /* Añadimos animación de pulso */
 }
 
-.whatsapp-widget img {
-    width: 40px;
-    height: 40px;
-}
-
-.whatsapp-widget:hover {
-    background-color: #1F3C88;
-    transform: scale(1.1);
+.whatsapp-widget {
+    position: fixed;
+    bottom: 40px; /* Aumentamos la distancia desde el borde inferior */
+    right: 50%; /* Ajuste centrado horizontalmente */
+    transform: translateX(50%); /* Centramos el botón */
+    background-color: #17BEBB;
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: pulse 3s infinite; /* Añadimos animación de pulso */
 }
 
 @keyframes pulse {
@@ -419,7 +425,8 @@ nav.active ~ .menu-background {
     /* Botón de WhatsApp más pequeño en móvil */
     .whatsapp-widget {
         bottom: 10px;
-        right: 10px;
+        right: 50%;
+        transform: translateX(50%); /* Centramos el botón de WhatsApp en pantallas pequeñas */
         padding: 10px;
     }
 
