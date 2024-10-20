@@ -48,41 +48,49 @@ header nav a:hover {
 /* Menú hamburguesa para dispositivos móviles */
 .menu-toggle {
     display: none;
-    cursor: pointer;
     flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 20px; /* Ajustamos el margen para que no se salga del borde */
+    top: 20px; /* Ajuste para alinear mejor verticalmente */
+    z-index: 1002;
+    background-color: transparent;
+    padding: 5px; /* Añadimos un poco de espacio interno */
 }
 
 .menu-toggle div {
     width: 25px;
     height: 3px;
     background-color: white;
-    margin: 5px;
+    margin: 4px 0;
 }
 
+/* Estilos de menú para móviles */
 @media (max-width: 768px) {
-    nav {
-        display: none; /* Ocultar el menú por defecto en móvil */
-    }
-
-    nav.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 60px; /* Justo debajo del header */
-        left: 0;
-        width: 100%; /* Ocupa todo el ancho de la pantalla */
-        background-color: #1A1A2E; /* Fondo del menú */
-        padding: 20px 0;
-        z-index: 999; /* Asegura que el menú esté sobre el contenido */
-    }
-
-    nav.active a {
-        margin: 15px 0; /* Más espacio entre los enlaces */
-        text-align: center;
-    }
-
     .menu-toggle {
-        display: flex; /* Mostrar el icono hamburguesa en móvil */
+        display: flex;
+        right: 15px; /* Ajustamos para que esté más alineado */
+        top: 20px; /* Ajuste para que no se superponga con otros elementos */
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: #1A1A2E;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    nav.active ul {
+        display: flex;
+    }
+
+    nav ul a {
+        margin: 15px 0;
+        font-size: 1.2rem;
     }
 }
 
@@ -95,6 +103,18 @@ header nav a:hover {
     border: none;
     border-radius: 5px;
     font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 80px; /* Separar del icono de hamburguesa */
+    z-index: 1001; /* Asegurar que esté por encima del contenido */
+}
+
+@media (max-width: 768px) {
+    #language-selector {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
 }
 
 /* Botones */
@@ -111,8 +131,9 @@ header nav a:hover {
 }
 
 .cta-button:hover, .cta-button-big:hover {
-    background-color: #1F3C88;
-    transform: scale(1.05);
+    box-shadow: 0px 6px 25px rgba(31, 60, 136, 0.6); /* Mayor suavidad en la sombra */
+    transform: scale(1.05); /* Pequeña animación al hacer hover */
+    transition: all 0.3s ease;
 }
 
 /* Sección de introducción */
@@ -212,6 +233,10 @@ header nav a:hover {
     margin-top: 10px;
 }
 
+.testimonial {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* Sección de contacto */
 .contact {
     display: flex;
@@ -227,7 +252,7 @@ header nav a:hover {
 
 .contact form {
     width: 100%;
-    max-width: 600px; /* Ancho máximo para pantallas grandes */
+    max-width: 600px;
     margin: 0 auto;
     background-color: #0D1B2A;
     padding: 25px;
@@ -236,15 +261,13 @@ header nav a:hover {
 }
 
 .contact input, .contact textarea {
-    width: 100%;
+    background-color: #1A1A2E;
+    color: #FFF;
+    border: 2px solid #444;
     padding: 14px;
     margin-bottom: 15px;
-    border: 2px solid #444;
-    background-color: #1A1A2E;
-    color: #fff;
-    font-size: 1.2rem;
     border-radius: 8px;
-    outline: none;
+    transition: border-color 0.3s ease;
 }
 
 .contact input:focus, .contact textarea:focus {
@@ -279,6 +302,7 @@ header nav a:hover {
     border-radius: 50px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: pulse 3s infinite; /* Añadimos animación de pulso */
 }
 
 .whatsapp-widget img {
@@ -291,12 +315,18 @@ header nav a:hover {
     transform: scale(1.1);
 }
 
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); } /* Reducción de la escala para suavizar */
+    100% { transform: scale(1); }
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     .intro h1 {
         font-size: 2.5rem;
     }
-    
+
     .cta-button, .cta-button-big {
         font-size: 1.1rem;
         padding: 10px 20px;
